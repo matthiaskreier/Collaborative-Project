@@ -13,37 +13,60 @@ function setupStandardAxes(showLines){
 
 }
 
+function ez_fix(){
+    for(var i = 0;i < NUM_ROTATIONS;i++){
+  rotate(360/NUM_ROTATIONS);
+  square(1/2*STEP, 1/2*STEP, 8)
+    square(3/2*STEP, -1/2*STEP, 10)
+    square(2*STEP, 1*STEP, 5)
+    }
+}
+
 function setup() {
   createCanvas(CANVAS_SIZE, CANVAS_SIZE);
   background(220);
   angleMode(DEGREES);
   setupStandardAxes();
   fill(0,0,0)
-  for(var i = 0; i < NUM_ROTATIONS; i++){
-  rotate(360/NUM_ROTATIONS);
-  square(1/2*STEP, 1/2*STEP, 8)
-    square(3/2*STEP, -1/2*STEP, 10)
-    square(2*STEP, 1*STEP, 5)
-  }
-  translate(200, 0)
-  for(var i = 0; i < NUM_ROTATIONS; i++){
-  rotate(360/NUM_ROTATIONS);
-  square(1/2*STEP, 1/2*STEP, 8)
-    square(3/2*STEP, -1/2*STEP, 10)
-    square(2*STEP, 1*STEP, 5)
-  }
-  translate(-200, -200)
-  for(var i = 0; i < NUM_ROTATIONS; i++){
-  rotate(360/NUM_ROTATIONS);
-  square(1/2*STEP, 1/2*STEP, 8)
-    square(3/2*STEP, -1/2*STEP, 10)
-    square(2*STEP, 1*STEP, 5)
-  }
-   translate(200, 0)
-  for(var i = 0; i < NUM_ROTATIONS; i++){
-  rotate(360/NUM_ROTATIONS);
-  square(1/2*STEP, 1/2*STEP, 8)
-    square(3/2*STEP, -1/2*STEP, 10)
-    square(2*STEP, 1*STEP, 5)
-  }  
+  
+  ez_fix();
+  translate(200,0)
+  ez_fix();
+  translate(-200,-200)
+  ez_fix();
+  translate(200,0)
+  ez_fix();
+  
+  
+  
+  
+//   for(var i = 0; i < NUM_ROTATIONS; i++){
+//   rotate(360/NUM_ROTATIONS);
+//   square(1/2*STEP, 1/2*STEP, 8)
+//     square(3/2*STEP, -1/2*STEP, 10)
+//     square(2*STEP, 1*STEP, 5)
+//   }
+  
+  
+//   translate(200, 0)
+//   for(var i = 0; i < NUM_ROTATIONS; i++){
+//   rotate(360/NUM_ROTATIONS);
+//   square(1/2*STEP, 1/2*STEP, 8)
+//     square(3/2*STEP, -1/2*STEP, 10)
+//     square(2*STEP, 1*STEP, 5)
+//   }
+//   translate(-200, -200)
+//   for(var i = 0; i < NUM_ROTATIONS; i++){
+//   rotate(360/NUM_ROTATIONS);
+//   square(1/2*STEP, 1/2*STEP, 8)
+//     square(3/2*STEP, -1/2*STEP, 10)
+//     square(2*STEP, 1*STEP, 5)
+//   }
+//    translate(200, 0)
+//   for(var i = 0; i < NUM_ROTATIONS; i++){
+//   rotate(360/NUM_ROTATIONS);
+//   square(1/2*STEP, 1/2*STEP, 8)
+//     square(3/2*STEP, -1/2*STEP, 10)
+//     square(2*STEP, 1*STEP, 5)
+//   }  
 }
