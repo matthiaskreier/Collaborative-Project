@@ -1,8 +1,13 @@
 let CANVAS_SIZE = 400;
+CANVAS_WIDTH = 500
+CANVAS_HEIGHT = 250
 let GRID_SQUARES = 10;
 let STEP = CANVAS_SIZE/GRID_SQUARES;
 let NUM_ROTATIONS = 10;
-
+let rotation = 0;
+NUM_ROWS = 20
+NUM_COLUMNS = 20
+TRIANGLE_HEIGHT = CANVAS_WIDTH/NUM_COLUMNS
 
 var COLORS = [[216, 164, 127],[239, 131, 84],[238, 75, 106],[223, 59, 87],[15, 113, 115], [13, 31, 45]]
 
@@ -10,7 +15,6 @@ function setupStandardAxes(showLines){
   push()
   translate(100,100)
   scale(1.0,-1.0)
-
 }
 
 function ez_fix(){
@@ -23,22 +27,93 @@ function ez_fix(){
 }
 
 function lineCreation(){
-    for(var i = 0;i < NUM_ROTATIONS;i++){
+    for(var i = -700;i < NUM_ROTATIONS;i++){
   rotate(360/NUM_ROTATIONS);
-  line(1/2*STEP, 1/2*STEP, 8)
-    line(3/2*STEP, -1/2*STEP, 10)
-    line(2*STEP, 1*STEP, 5)
+  line(-i, -400, i, 400)
     }
 }
 
 
+function lineCreation1(){
+    for(var i = -100;i < NUM_ROTATIONS;i++){
+  rotate(360/NUM_ROTATIONS);
+  line(-i, -80, i, 80)
+    }
+}
+
+function three_bars() {
+  fill(0, 0, 0)
+  rect(120, -30, -10, 60);
+  rect(140, -30, -10, 60);
+  rect(160, -30, -10, 60);
+}
+
 function setup() {
   createCanvas(CANVAS_SIZE, CANVAS_SIZE);
   background(220);
-  angleMode(DEGREES);
-  setupStandardAxes();
-  fill(0,0,0)
+    for(var i = 0; i < NUM_COLUMNS; i++){
+    for(var j = 0; j < NUM_ROWS; j++){
+      
+     noStroke()
+      if(j < NUM_ROWS/2){
+        let whiteValue = random(10+10*j, 90+50*j)
+        fill(whiteValue, whiteValue, whiteValue)
+      }
+      else{
+        let whiteValue = random(10 + 10*(NUM_ROWS - j), 90+50*(NUM_ROWS - j))
+      fill(whiteValue, whiteValue, whiteValue)
+      }
+      
+      let point1X = i*TRIANGLE_HEIGHT
+      let point1Y = j*TRIANGLE_HEIGHT
+      let point2X = (i+1)*TRIANGLE_HEIGHT
+      let point2Y = j*TRIANGLE_HEIGHT
+      let point3X = i*TRIANGLE_HEIGHT
+      let point3Y = (j+1)*TRIANGLE_HEIGHT
+      let point4X = (i+1)*TRIANGLE_HEIGHT
+      let point4Y = (j+1)*TRIANGLE_HEIGHT
+      
+  triangle(point1X, point1Y, point2X, point2Y, point3X, point3Y)
+    if(j < NUM_ROWS/2){
+        let whiteValue = random(10+10*j, 90+50*j)
+        fill(whiteValue, whiteValue, whiteValue)
+      }
+      else{
+        let whiteValue = random(10 + 10*(NUM_ROWS - j), 90+50*(NUM_ROWS - j))
+      fill(whiteValue, whiteValue, whiteValue)
+      }
+      
+  triangle(point2X, point2Y, point3X, point3Y, point4X, point4Y)
+    }
+  }
+
+angleMode(DEGREES);
+setupStandardAxes();
   
+  stroke(0)
+  lineCreation1()
+  
+  stroke(0)
+  translate(200, 0)
+  lineCreation1()
+  translate(-200, 0)
+  
+  stroke(0)
+  translate(0, -200)
+  lineCreation1()
+  translate(0, 200)
+  
+  stroke(0)
+  translate(0, -200)
+  lineCreation1()
+  translate(0, 200)
+  
+  stroke(0)
+  translate(200, -200)
+  lineCreation1()
+  translate(-200, 200)
+  
+  fill(0,0,0)
   ez_fix();
   translate(200,0)
   ez_fix();
@@ -47,7 +122,7 @@ function setup() {
   translate(200,0)
   ez_fix();
   translate(-300,-100)
-   noStroke();
+  noStroke();
   fill(255, 0, 0);
   circle(200, 200, 160);
   fill(0, 0, 255);
@@ -55,7 +130,9 @@ function setup() {
   circle(240, 200, 80);
   fill(255, 0, 0);
   circle(160, 200, 80);
-}
 
-function draw() {
-}
+  fill(0);
+  translate(200, 190);
+  rotate(180 / 6);
+
+ }
